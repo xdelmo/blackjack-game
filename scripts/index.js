@@ -47,6 +47,9 @@ function getRandomCard() {
 // Create a new function called startGame() that calls renderGame()
 function startGame() {
   isAlive = true;
+  // BUG SOLVED! When you got Blackjack you couldn't drawn a card in next new games
+  // Re-assign hasBlackJack to false every new game
+  hasBlackJack = false;
 
   // Generate two random numbes
   // Use the getRandomCard() to set the value of first and second cards
