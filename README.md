@@ -1,6 +1,6 @@
 # Scrimba - Blackjack game solution
 
-This is a solution to the [Blackjack game project on Scrimba](<(https://scrimba.com/learn/learnjavascript/)>). Scrimba helps you improve your coding skills by building realistic projects.
+This is a solution to the [Blackjack game project on Scrimba](https://scrimba.com/learn/learnjavascript/). Scrimba helps you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
