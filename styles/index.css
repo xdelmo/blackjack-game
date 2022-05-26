@@ -12,6 +12,7 @@
   /* Primary */
   --clr-light-green: #9ed3a3;
   --clr-bright-red: #c36367;
+  --clr-dark-blue: #222c44;
 
   /* Neutral  */
   --clr-light-blue: #b3c3fe;
@@ -42,13 +43,14 @@ img {
 /* ---------------------- */
 
 body {
-  font-family: var(--ff-main);
+  font-family: var(--ff-serif);
   font-weight: bold;
-  color: black;
+  color: var(--clr-dark-blue);
   background-color: var(--clr-light-blue);
 }
 
 h1 {
+  font-family: var(--ff-main);
   color: var(--clr-desaturated-yellow);
   padding: 1em;
   text-transform: uppercase;
@@ -56,12 +58,12 @@ h1 {
 
 p {
   margin: 1em;
-  font-family: var(--ff-serif);
   font-weight: 400;
 }
 
 hr {
   margin-top: 1em;
+  color: var(--clr-light-blue);
 }
 
 footer {
