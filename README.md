@@ -14,6 +14,7 @@ This is a solution to the [Blackjack game project on Scrimba](https://scrimba.co
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -78,3 +79,7 @@ I'd like to:
 ## Author
 
 - Website - [Emanuele Del Monte](https://www.emanueledelmonte.it)
+
+## Acknowledgments
+
+A big thank you to [Per Harald Borgen](https://github.com/perborgen) who is a pleasure to listen to and to learn new this in funny and interactive way 👏
