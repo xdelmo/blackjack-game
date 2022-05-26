@@ -1,10 +1,12 @@
-// Declare and store the player's info in a object called player
+// Declare and store player's info in a object called player
 let player = {
   name: "xDelmo",
   chips: 145,
 };
 
-let cards = []; // array - ordered list of cards
+// Declare a variable called cards and assign its value to an empty array
+let cards = [];
+// Declare a variable called sum and assign its value to 0
 let sum = 0;
 
 let hasBlackJack = false;
@@ -44,7 +46,7 @@ function getRandomCard() {
   }
 }
 
-// Create a new function called startGame() that calls renderGame()
+// Create a new function called startGame() that assign the first 2 cards and calls renderGame()
 function startGame() {
   isAlive = true;
   // BUG SOLVED! When you got Blackjack you couldn't drawn a card in next new games
@@ -65,7 +67,7 @@ function startGame() {
 
 function renderGame() {
   // Render the cars on the page
-  cardsEl.textContent = "Cards: "; // PROBLEMA CON PROSSIME CARTE???
+  cardsEl.textContent = "Cards: ";
 
   // Create a for loop that renders out all the cards instead of just two
   for (let i = 0; i < cards.length; i++) {
@@ -92,12 +94,12 @@ function renderGame() {
   messageEl.textContent = message;
 }
 
-// Create a function newCard() that logs out
+// Create a function newCard() that create a new card and add its value to sum variable
 
 function newCard() {
   // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
   if (isAlive === true && hasBlackJack === false) {
-    console.log("Drawing a new card from the deck!");
+    // console.log("Drawing a new card from the deck!");
 
     // Create a card variable and get a random number
     let card = getRandomCard();
@@ -110,7 +112,7 @@ function newCard() {
     cards.push(card);
     // console.log(cards);
 
-    // Call startGame()
+    // Call renderGame()
     renderGame();
   }
 }
