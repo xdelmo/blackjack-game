@@ -25,6 +25,8 @@ Users should be able to:
 - Start a Blackjack game with first 2 cards
 - Draw additional cards as long as they have sum < 20
 - Can't draw a new card if they have Blackjack or a sum > 21
+- Bet $20 every new game
+- Win triple the bet every Blackjack they got
 - See hover states for interactive elements
 
 ### Screenshot
@@ -67,8 +69,8 @@ cards.push(card);
 I'd like to:
 
 - Hide buttons when you can't click on the them
-- Add $100 to player's chips everytime he wins with Blackjack
-- Remove $20 to player's chips everytime he starts a new game
+- ~~Remove $20 to player's chips everytime he starts a new game~~
+- ~~Add triple the bet to player's chips everytime he wins with Blackjack~~
 
 ### Useful resources
 

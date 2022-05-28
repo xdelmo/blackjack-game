@@ -1,7 +1,7 @@
 // Declare and store player's info in a object called player
 let player = {
   name: "xDelmo",
-  chips: 145,
+  chips: 200,
 };
 
 // Declare a variable called cards and assign its value to an empty array
@@ -9,7 +9,14 @@ let cards = [];
 // Declare a variable called sum and assign its value to 0
 let sum = 0;
 
+// Declare a variable called bet and assign its value to 20
+let bet = 20;
+// Declare a variable called prize and assign its value to triple the bet
+let prize = bet * 3;
+
+// Declare a variable called hasBlackJack and assign its value to false
 let hasBlackJack = false;
+// Declare a variable called isAlive and assign its value to false
 let isAlive = false;
 
 // Declare a variable called message and assign its value to an empty string
@@ -17,8 +24,6 @@ let message = "";
 
 // Store the message-el paragraph in a variable called messageEl
 let messageEl = document.getElementById("message-el");
-
-// console.log(sum);
 
 // Store the sum paragraph in a variable called sumEl
 let sumEl = document.getElementById("sum-el");
@@ -33,7 +38,6 @@ playerEl.textContent = player.name + ": $" + player.chips;
 // Create a function, getRandomCard() that return a random number between 2-13
 function getRandomCard() {
   let randomNumber = Math.floor(Math.random() * 13) + 1;
-  // console.log(randomNumber);
 
   // if 1     -> return 11
   // if 11-13 -> return 10
@@ -48,21 +52,29 @@ function getRandomCard() {
 
 // Create a new function called startGame() that assign the first 2 cards and calls renderGame()
 function startGame() {
-  isAlive = true;
-  // BUG SOLVED! When you got Blackjack you couldn't drawn a card in next new games
-  // Re-assign hasBlackJack to false every new game
-  hasBlackJack = false;
+  if (player.chips >= bet) {
+    // Call updateChips()
 
-  // Generate two random numbes
-  // Use the getRandomCard() to set the value of first and second cards
-  let firstCard = getRandomCard();
-  let secondCard = getRandomCard();
+    isAlive = true;
+    // BUG SOLVED! When you got Blackjack you couldn't drawn a card in next new games
+    // Re-assign hasBlackJack to false every new game
+    hasBlackJack = false;
+    updateChips();
+    // Generate two random numbes
+    // Use the getRandomCard() to set the value of first and second cards
+    let firstCard = getRandomCard();
+    let secondCard = getRandomCard();
 
-  // Re-assign the cards and sum variables so that the game can start
-  cards = [firstCard, secondCard];
-  sum = firstCard + secondCard;
+    // Re-assign the cards and sum variables so that the game can start
+    cards = [firstCard, secondCard];
+    sum = firstCard + secondCard;
 
-  renderGame();
+    renderGame();
+  } else {
+    // Reassign the message variable
+    message = "You don't have enough chips!";
+    messageEl.textContent = message;
+  }
 }
 
 function renderGame() {
@@ -84,6 +96,9 @@ function renderGame() {
     // Reassign the message variable
     message = "You've got Blackjack!";
     hasBlackJack = true;
+    isAlive = false;
+    // Call updateChips()
+    updateChips();
   } else {
     // Reassign the message variable
     message = "You're out of the game!";
@@ -95,27 +110,32 @@ function renderGame() {
 }
 
 // Create a function newCard() that create a new card and add its value to sum variable
-
 function newCard() {
   // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
   if (isAlive === true && hasBlackJack === false) {
-    // console.log("Drawing a new card from the deck!");
-
     // Create a card variable and get a random number
     let card = getRandomCard();
-    // console.log(card);
 
     // Add the new card to the sum variable
     sum += card;
-    // console.log(sum);
     // Push the card to the cards array
     cards.push(card);
-    // console.log(cards);
 
     // Call renderGame()
     renderGame();
   }
 }
 
-// console.log("blackjack:" + hasBlackJack);
-// console.log("alive:" + isAlive);
+//NEW FUNCTION
+// Create a function updateChips() that
+function updateChips() {
+  if (hasBlackJack === true && isAlive === false) {
+    // Add prize to player's chips everytime he got Blackjack
+    player.chips += prize;
+    playerEl.textContent = player.name + ": $" + player.chips;
+  } else if (hasBlackJack === false && isAlive === true) {
+    // Remove bet to player's chips everytime he starts a new game
+    player.chips -= bet;
+    playerEl.textContent = player.name + ": $" + player.chips;
+  }
+}
