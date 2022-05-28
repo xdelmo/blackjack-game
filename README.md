@@ -68,7 +68,7 @@ cards.push(card);
 
 I'd like to:
 
-- Hide buttons when you can't click on the them
+- ~~Hide buttons when you can't click on the them~~
 - ~~Remove $20 to player's chips everytime he starts a new game~~
 - ~~Add triple the bet to player's chips everytime he wins with Blackjack~~
 

@@ -35,7 +35,12 @@ let cardsEl = document.getElementById("cards-el");
 let playerEl = document.getElementById("player-el");
 playerEl.textContent = player.name + ": $" + player.chips;
 
-// Create a function, getRandomCard() that return a random number between 2-13
+// Store start button in a variable called buttonStartEL
+let buttonStartEL = document.getElementById("btn-start-el");
+// Store draw button in a variable called buttonDrawEL
+let buttonDrawEL = document.getElementById("btn-draw-el");
+
+// Create a function getRandomCard() that return a random number between 2-13
 function getRandomCard() {
   let randomNumber = Math.floor(Math.random() * 13) + 1;
 
@@ -53,13 +58,13 @@ function getRandomCard() {
 // Create a new function called startGame() that assign the first 2 cards and calls renderGame()
 function startGame() {
   if (player.chips >= bet) {
-    // Call updateChips()
-
     isAlive = true;
     // BUG SOLVED! When you got Blackjack you couldn't drawn a card in next new games
     // Re-assign hasBlackJack to false every new game
     hasBlackJack = false;
+    // Call updateChips()
     updateChips();
+    displayButtons();
     // Generate two random numbes
     // Use the getRandomCard() to set the value of first and second cards
     let firstCard = getRandomCard();
@@ -107,6 +112,7 @@ function renderGame() {
 
   // Display the message in the messageEl using messageEl.textContent
   messageEl.textContent = message;
+  displayButtons();
 }
 
 // Create a function newCard() that create a new card and add its value to sum variable
@@ -126,16 +132,34 @@ function newCard() {
   }
 }
 
-//NEW FUNCTION
+//NEW FUNCTION 1.1
 // Create a function updateChips() that
 function updateChips() {
   if (hasBlackJack === true && isAlive === false) {
-    // Add prize to player's chips everytime he got Blackjack
+    // Add prize to player's chips everytime he gets Blackjack
     player.chips += prize;
     playerEl.textContent = player.name + ": $" + player.chips;
   } else if (hasBlackJack === false && isAlive === true) {
     // Remove bet to player's chips everytime he starts a new game
     player.chips -= bet;
     playerEl.textContent = player.name + ": $" + player.chips;
+  }
+}
+
+//NEW FUNCTION 1.2
+// Create a function displayButtons() that displays or hides buttons according to player's state
+function displayButtons() {
+  if (isAlive === false) {
+    // Change display property to draw button hiding it when game is over
+    buttonDrawEL.style.display = "none";
+  } else {
+    buttonDrawEL.style.display = "block";
+  }
+  if (player.chips < bet) {
+    // Change display property to start button hiding when player's chips are not enough
+    buttonStartEL.style.display = "none";
+  } else {
+    // Change display property to start button displaying it otherwise
+    buttonStartEL.style.display = "block";
   }
 }
