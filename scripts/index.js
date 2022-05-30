@@ -155,7 +155,7 @@ function displayButtons() {
   } else {
     buttonDrawEL.style.display = "block";
   }
-  if (player.chips < bet) {
+  if (player.chips < bet || isAlive === true) {
     // Change display property to start button hiding when player's chips are not enough
     buttonStartEL.style.display = "none";
   } else {

@@ -13,6 +13,7 @@
   --clr-light-green: #9ed3a3;
   --clr-bright-red: #c36367;
   --clr-dark-blue: #222c44;
+  --clr-light-orange: #eb9e6c;
 
   /* Neutral  */
   --clr-light-blue: #b3c3fe;
@@ -112,6 +113,12 @@ footer {
 
 #btn-draw-el {
   display: none;
+  background-color: var(--clr-light-orange);
+}
+
+#btn-draw-el:hover,
+#btn-draw-el:focus {
+  background-color: var(--clr-bright-red);
 }
 
 /* ---------------------- */
